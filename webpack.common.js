@@ -12,7 +12,19 @@ module.exports = {
         test: /\.(css|scss)$/,
         use: ["style-loader", "css-loader", "sass-loader"]
       },
-      { test: /\.(jpg|jpeg|png|gif|mp3|svg)$/, loaders: ["file-loader"] }
+      { test: /\.(jpg|jpeg|png|gif|mp3|svg)$/, loaders: ["file-loader"] },
+      {
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "fonts/"
+            }
+          }
+        ]
+      }
     ]
   },
   plugins: [
